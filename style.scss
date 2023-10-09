@@ -1,0 +1,192 @@
+$color1: #A9C8DE;
+$color2: lightgreen;
+$color3: palegoldenrod;
+$color4: #fff;
+$color5: #fff;
+$color6: #DEB4B4;
+$boxshadow1: 0 2px 5px 0 rgba(0,0,0,0.2);
+
+@mixin center {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+@mixin tabletvert {
+    @media screen and (min-width: 500px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin button {
+    border: unset;
+    background-color: $color2;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: 120ms;
+    display: block;
+    font-size: 18px;
+    letter-spacing: .5px;
+    border-radius: 8px;
+    box-shadow: $boxshadow1;
+    &:hover,
+    &:focus {
+        background-color: $color3;
+    }
+}
+
+body {
+    background-color: $color4;
+    font-family: 'Open Sans', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: .5px;
+    font-family: 'Ubuntu Mono', monospace;
+    margin: 0 0 20px 0;
+    @include tablet {
+        font-size: 40px;
+    }
+}
+
+input {
+    border: unset;
+}
+
+label {
+    line-height: 2;
+    @include tablet {
+        display: inline-block;
+        line-height: 1;
+        margin-bottom: 6px;
+    }
+}
+
+.inner {
+    background-color: $color1;
+    padding: 10px 20px 30px 20px;
+    margin: 0 auto;
+    @include tabletvert {
+        padding: 10px 70px 30px 70px;
+    }
+    @include tablet {
+        background-color: $color5;
+        padding: 35px 70px 30px 70px;
+        max-width: 960px;
+    }
+    header {
+        @include tablet {
+            margin: 0 0 36px 0;
+        }
+    }
+    .wrapper {
+        // margin: 0 auto;
+        // @include tablet {
+        //     max-width: 790px;
+        // }
+        .col {
+            flex-basis: 100%;
+            &.inputs {
+                margin-bottom: 30px;
+                .wrapper-inner {
+                    @include tablet {
+                        display: flex;
+                        background-color: $color1;
+                        border-radius: 12px;
+                        padding: 20px;
+                        box-shadow: $boxshadow1;
+                    }
+                }
+                fieldset {
+                    padding: unset;
+                    border: unset;
+                    margin: unset;
+                    label {
+                        font-size: 16px;
+                        line-height: 1.5;
+                        letter-spacing: .3px;
+                    }
+                }
+            
+                .checkboxes {
+                    margin: 0 0 10px 0;
+                }
+                
+                .field-inputs {
+                    fieldset {
+                        margin: 10px 0 18px 0;
+                        @include tablet {
+                            margin: 0 0 18px 0;
+                            max-width: 350px;
+                        }
+
+                        input {
+                            width: 100%;
+                            padding: 5px;
+                            border: unset;
+                            box-shadow: $boxshadow1;
+                            border-radius: 8px;
+                            @include tablet {
+                                box-shadow: unset;
+                            }
+                        }
+                    }
+                }
+                button {
+                    @include button;
+                    background-color: $color6;
+                    @include tablet {
+                        margin: 60px auto;
+                    }
+                }
+            
+                .checkboxes,
+                .field-inputs {
+                    @include tablet {
+                        flex-basis: 50%;
+                    }
+                }
+            
+                
+            }
+            &.output {
+                @include tablet {
+                    background-color: $color1;
+                    border-radius: 12px;
+                    box-shadow: $boxshadow1;
+                    padding: 20px;
+                }
+                textarea {
+                    width: 100%;
+                    padding: 2px;
+                    border: unset;
+                    border-radius: 8px;
+                    box-shadow: $boxshadow1;
+                    min-height: 100px;
+                    @include tablet {
+                        box-shadow: unset;
+                    }
+                }
+                button {
+                    @include button;
+                    margin: 18px 0 0 0;
+                }
+            }
+        }
+    }
+}
+
+

@@ -4,34 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pretty Password Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
-    <div class="wrapper">
+    <div class="inner">
         <header>
             <h1>Pretty Password Generator</h1>
         </header>
-        <textarea name="" id="password" cols="30" rows="10"></textarea>
-        <div>
 
-            <input type="checkbox" name="useUppers" id="useUppers">
-            <label for="useUppers">Include Uppercase Letters</label>
-            <input type="checkbox" name="useLowers" id="useLowers">
-            <label for="useLowers">Include Lowercase Letters</label>
-            <input type="checkbox" name="useNumbers" id="useNumbers">
-            <label for="useNumbers">Include Numbers</label>
-            <input type="checkbox" name="useSpecials" id="useSpecials">
-            <label for="useSpecials">Include Special Characters</label>
+        <div class="wrapper">
+            <div class="col inputs">
+                <div class="wrapper-inner">
+                    <div class="checkboxes">
+                        <fieldset>
+                            <input type="checkbox" name="useUppers" id="useUppers" checked>
+                            <label for="useUppers">Include Uppercase Letters</label>
+                        </fieldset>
+                        <fieldset>
+                            <input type="checkbox" name="useLowers" id="useLowers" checked>
+                            <label for="useLowers">Include Lowercase Letters</label>
+                        </fieldset>
+                        <fieldset>
+                            <input type="checkbox" name="useNumbers" id="useNumbers" checked>
+                            <label for="useNumbers">Include Numbers</label>
+                        </fieldset>
+                        <fieldset>
+                            <input type="checkbox" name="useSpecials" id="useSpecials" checked>
+                            <label for="useSpecials">Include Special Characters</label>
+                        </fieldset>
+                    </div>
+                    <div class="field-inputs">
+                        <fieldset class="exclusions-field">
+                            <label for="exclusions">Characters to exclude:</label>
+                            <input type="text" name="exclusions" id="exclusions">
+                        </fieldset>
+                        <fieldset class="password-length">
+                            <label for="passlength">Password length:</label>
+                            <input type="number" id="passlength" name="passlength" value="16" min="1" max="1000">
+                        </fieldset>
+                    </div>
+                </div>
 
-            <label for="exclusions">Characters to exclude</label>
-            <input type="text" name="exclusions" id="exclusions">
-
-            <label for="passlength">Password length</label>
-            <input type="number" id="passlength" name="passlength" value="16">
-
+                <button id="generate">Generate Password</button>
+            </div>
+            <div class="col output">
+                <label for="password">Password Output:</label>
+                <textarea name="password-output" id="password"></textarea>
+                <button id="copy-button">Copy Password</button>
+            </div>
         </div>
-        <button id="generate">Generate Password</button>
+
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
