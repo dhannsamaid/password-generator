@@ -1,8 +1,9 @@
-console.log('hello from script.js');
+// console.log('hello from script.js');
 
 const genBtn = document.querySelector('#generate');
 const textArea = document.querySelector('#password');
 const passwordLengthEl = document.querySelector('#passlength');
+const copyBtn = document.querySelector('#copy-button');
 
 const uppers = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 const lowers = uppers.map(i => i.toLowerCase());
@@ -10,7 +11,7 @@ const numbers = ['0','1','2','3','4','5','6','7','8','9'];
 const specials = ['!','#','$','%','&','(',')','*','+',',','-','.','/',':',';','<','>','?','@','[',']',']','^','_','{','}','|','~'];
 
 function writePassword() {
-    textArea.value = generatePassword();
+    textArea.value = generatePassword(); 
 }
 
 function generatePassword() {
@@ -22,7 +23,7 @@ function generatePassword() {
         let randNum = Math.floor(Math.random() * charSet.length);
         let randChar = charSet[randNum];
 
-        console.log(`inserting char "${randChar} "at rand index ${randNum}`);
+        // console.log(`inserting char "${randChar} "at rand index ${randNum}`);
 
         currentPass.push(randChar);
     }
@@ -58,7 +59,7 @@ function setCharacters(exclusionSet) {
 
     const charSet = newArray.concat(uppersToUse, lowersToUse, numbersToUse,specialsToUse);
 
-    console.log(`charset: ${charSet}`);
+    // console.log(`charset: ${charSet}`);
 
     return charSet;
 }
@@ -69,4 +70,9 @@ function getExclusionSet() {
     return charactersToExclude;
 }
 
-document.querySelector('#generate').addEventListener('click', writePassword);
+function copyPassword() {
+    const textToCopy = textArea.value;
+    navigator.clipboard.writeText(textToCopy);
+}
+genBtn.addEventListener('click', writePassword);
+copyBtn.addEventListener('click', copyPassword);
