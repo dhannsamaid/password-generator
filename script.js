@@ -20,11 +20,8 @@ function generatePassword() {
     const passwordLength = passwordLengthEl.value;
     const currentPass = [];
     for (let i = 0; i < passwordLength; i++) {
-        let randNum = Math.floor(Math.random() * charSet.length);
-        let randChar = charSet[randNum];
-
-        // console.log(`inserting char "${randChar} "at rand index ${randNum}`);
-
+        let randNum = crypto.getRandomValues(new Uint32Array(1))[0];
+        let randChar = charSet[randNum % charSet.length]
         currentPass.push(randChar);
     }
 
